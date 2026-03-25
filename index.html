@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фокус — Заметки и Таймер</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Onest:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">ФОКУС</div>
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showPage('notes')">
+          📝 Заметки
+        </button>
+        <button class="nav-tab" onclick="showPage('timer')">⏱ Таймер</button>
+      </div>
+    </nav>
+
+    <!-- NOTES PAGE -->
+    <div class="page active" id="page-notes">
+      <div class="notes-layout">
+        <div class="notes-sidebar">
+          <button class="btn-new" onclick="newNote()">+ Новая заметка</button>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Поиск заметок..."
+              oninput="renderNotesList()"
+            />
+          </div>
+          <div class="notes-list" id="notes-list"></div>
+        </div>
+
+        <div class="notes-editor" id="editor">
+          <div class="empty-state" id="empty-state">
+            <div class="icon">📄</div>
+            <p>Выбери заметку или создай новую</p>
+          </div>
+
+          <div
+            id="editor-content"
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              gap: 12px;
+            "
+          >
+            <div class="editor-header">
+              <input
+                type="text"
+                id="note-title"
+                placeholder="Заголовок..."
+                oninput="saveCurrentNote()"
+              />
+              <div class="toolbar">
+              </div>
+            </div>
+            <textarea
+              id="note-content"
+              placeholder="Начни писать здесь..."
+              oninput="
+                saveCurrentNote();
+                updateCharCount();
+              "
+            ></textarea>
+            <div class="editor-footer">
+              <span class="char-count" id="char-count">0 символов</span>
+              <span class="save-indicator" id="save-indicator"
+                >✓ Сохранено</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMER PAGE -->
+    <div class="page" id="page-timer">
+      <div class="timer-page">
+        <div class="timer-main">
+          <div class="timer-mode-tabs">
+            <button class="mode-tab active" onclick="setMode('pomodoro')">
+              ФОКУС
+            </button>
+            <button class="mode-tab" onclick="setMode('focus')">
+              ГЛУБОКИЙ ФОКУС
+            </button>
+            <button class="mode-tab" onclick="setMode('break')"> ПЕРЕРЫВ</button>
+          </div>
+
+          <div class="timer-ring-wrap">
+            <svg class="timer-ring-svg" viewBox="0 0 280 280">
+              <circle class="ring-bg" cx="140" cy="140" r="120" />
+              <circle
+                class="ring-progress"
+                id="ring"
+                cx="140"
+                cy="140"
+                r="120"
+                stroke-dasharray="753.98"
+                stroke-dashoffset="0"
+              />
+            </svg>
+            <div class="timer-display">
+              <div class="timer-time" id="timer-display">25:00</div>
+              <div class="timer-label" id="timer-label">ФОКУС</div>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+            <button class="btn-reset" onclick="resetTimer()">↺ Сброс</button>
+            <button class="btn-timer" id="start-btn" onclick="toggleTimer()">
+              СТАРТ
+            </button>
+          </div>
+
+          <div class="timer-settings" id="timer-settings">
+            <div class="setting-group">
+              <label>Работа (мин)</label>
+              <input
+                type="number"
+                id="work-time"
+                value="25"
+                min="1"
+                max="120"
+                onchange="applySettings()"
+              />
+            </div>
+            <div class="setting-group">
+              <label>Перерыв (мин)</label>
+              <input
+                type="number"
+                id="break-time"
+                value="5"
+                min="1"
+                max="60"
+                onchange="applySettings()"
+              />
+            </div>
+            <div class="setting-group">
+              <label>Длинный перерыв</label>
+              <input
+                type="number"
+                id="long-break-time"
+                value="15"
+                min="1"
+                max="90"
+                onchange="applySettings()"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="timer-sidebar">
+          <!-- Tasks -->
+          <div class="sidebar-card">
+            <h3>Задачи сессии</h3>
+            <div class="task-input-row">
+              <input
+                type="text"
+                class="task-input"
+                id="task-input"
+                placeholder="Добавить задачу..."
+                onkeydown="if (event.key === 'Enter') addTask();"
+              />
+              <button class="btn-add-task" onclick="addTask()">+</button>
+            </div>
+            <div class="tasks" id="tasks-list"></div>
+          </div>
+
+          <!-- History -->
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notif" id="notif">
+      <div class="notif-title" id="notif-title">УВЕДОМЛЕНИЕ</div>
+      <div id="notif-msg"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
