@@ -39,21 +39,6 @@ nav {
     z-index: 100;
 }
 
-input,
-textarea,
-select {
-    font-size: 16px;
-}
-
-@media (min-width: 768px) {
-
-    input,
-    textarea,
-    select {
-        font-size: 14px;
-    }
-}
-
 .logo {
     font-family: "Unbounded", sans-serif;
     font-weight: 800;
@@ -150,7 +135,7 @@ select {
     padding: 10px 14px 10px 38px;
     color: var(--text);
     font-family: "Onest", sans-serif;
-    font-size: 0.85rem;
+    font-size: 16px;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -297,7 +282,7 @@ select {
     border: none;
     color: var(--text);
     font-family: "Onest", sans-serif;
-    font-size: 0.95rem;
+    font-size: 16px;
     line-height: 1.75;
     resize: none;
     outline: none;
@@ -677,7 +662,7 @@ select {
     padding: 9px 12px;
     color: var(--text);
     font-family: "Onest", sans-serif;
-    font-size: 0.85rem;
+    font-size: 16px;
     outline: none;
 }
 
@@ -907,10 +892,9 @@ select {
         grid-template-columns: 1fr 280px;
     }
 
-    .note-delete {
+    .note-delete{
         color: var(--danger);
     }
-
     .timer-ring-wrap,
     .timer-ring-svg {
         width: 250px;
