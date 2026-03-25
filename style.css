@@ -853,7 +853,7 @@ nav {
 
 .setting-group input[type="number"] {
     width: 56px;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 /* ================= TABLET ≥ 768px ================= */
@@ -887,6 +887,7 @@ nav {
         padding: 20px;
     }
 
+    
     /* TIMER */
     .timer-page {
         grid-template-columns: 1fr 280px;
@@ -973,20 +974,3 @@ nav {
     transform: scale(0.9);
 }
 
-/* Десктоп: скрываем и показываем по hover */
-@media (hover: hover) {
-    .note-delete {
-        opacity: 0;
-        color: var(--text-muted);
-    }
-
-    .note-item:hover .note-delete {
-        opacity: 1;
-        color: var(--danger);
-    }
-}
-
-/* Немного UX */
-.note-delete:hover {
-    transform: scale(1.2);
-}
