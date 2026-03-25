@@ -101,6 +101,8 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 100%;
+
 }
 
 .btn-new {
@@ -159,8 +161,33 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+
+    /* УБРАЛИ ограничение */
+    max-height: none;
+
+    /* Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: var(--accent2) var(--surface);
+}
+
+/* Chrome / Edge / Safari */
+.notes-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.notes-list::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 10px;
+}
+
+.notes-list::-webkit-scrollbar-thumb {
+    background: var(--accent2);
+    border-radius: 10px;
+    border: 2px solid var(--surface);
+}
+
+.notes-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 
 .note-item {
@@ -805,9 +832,6 @@ nav {
     order: 2;
 }
 
-.notes-list {
-    max-height: 200px;
-}
 
 /* TIMER (mobile = вертикаль) */
 .timer-page {
@@ -879,23 +903,21 @@ nav {
         height: calc(100vh - 130px);
     }
 
-    .notes-list {
-        max-height: none;
-    }
 
     .notes-editor {
         padding: 20px;
     }
 
-    
+
     /* TIMER */
     .timer-page {
         grid-template-columns: 1fr 280px;
     }
 
-    .note-delete{
+    .note-delete {
         color: var(--danger);
     }
+
     .timer-ring-wrap,
     .timer-ring-svg {
         width: 250px;
@@ -973,4 +995,3 @@ nav {
 .note-delete:active {
     transform: scale(0.9);
 }
-
