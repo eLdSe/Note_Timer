@@ -39,6 +39,21 @@ nav {
     z-index: 100;
 }
 
+input,
+textarea,
+select {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+
+    input,
+    textarea,
+    select {
+        font-size: 14px;
+    }
+}
+
 .logo {
     font-family: "Unbounded", sans-serif;
     font-weight: 800;
@@ -892,9 +907,10 @@ nav {
         grid-template-columns: 1fr 280px;
     }
 
-    .note-delete{
+    .note-delete {
         color: var(--danger);
     }
+
     .timer-ring-wrap,
     .timer-ring-svg {
         width: 250px;
