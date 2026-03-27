@@ -228,7 +228,7 @@ function onPhaseComplete() {
     clearInterval(timerInterval);
     isRunning = false;
     const start_btn = document.getElementById("start-btn");
-    if(start_btn) btn.textContent = "СТАРТ"
+    if(start_btn) start_btn.textContent = "СТАРТ"
 
     if (timerMode === "pomodoro") {
         pomodoroCount++;
