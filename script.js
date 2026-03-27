@@ -232,7 +232,6 @@ function onPhaseComplete() {
 
     notify("⏰ Таймер завершён!", "Время, чтобы сделать паузу или продолжить работу.");
     playBeep()
-    updateDisplay();
     updateRing();
 }
 
