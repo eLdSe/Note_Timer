@@ -227,11 +227,7 @@ function onPhaseComplete() {
     // Таймер остановлен
     clearInterval(timerInterval);
     isRunning = false;
-    document.getElementById("start-btn").textContent = "СТАРТ";
-
-    // Просто уведомление о завершении таймера
-    notify("⏰ Таймер завершён!", "Время, чтобы сделать паузу или продолжить работу.");
-    playBeep();
+    document.getElementById("start-btn").textContent = "СТАРТ";;
 
     if (timerMode === "pomodoro") {
         pomodoroCount++;
@@ -249,6 +245,8 @@ function onPhaseComplete() {
         totalSeconds = 10 * 60;
     }
     remainingSeconds = totalSeconds;
+    notify("⏰ Таймер завершён!", "Время, чтобы сделать паузу или продолжить работу.");
+    playBeep()
     updateDisplay();
     updateRing();
 }
