@@ -230,22 +230,6 @@ function onPhaseComplete() {
     let start_btn = document.getElementById("start-btn");
     if(start_btn) start_btn.textContent = "СТАРТ"
 
-    if (timerMode === "pomodoro") {
-        pomodoroCount++;
-        if (pomodoroCount === 4) {
-            pomodoroCount = 0;
-            currentPhase = "longbreak";
-            totalSeconds = getLongBreakTime();
-        } else {
-            currentPhase = "break";
-            totalSeconds = getBreakTime();
-        }
-    } else if (timerMode === "focus") {
-        totalSeconds = 90 * 60;
-    } else {
-        totalSeconds = 10 * 60;
-    }
-    remainingSeconds = totalSeconds;
     notify("⏰ Таймер завершён!", "Время, чтобы сделать паузу или продолжить работу.");
     playBeep()
     updateDisplay();
