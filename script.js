@@ -205,6 +205,13 @@ function toggleTimer() {
         isRunning = false;
         document.getElementById("start-btn").textContent = "ПРОДОЛЖИТЬ";
     } else {
+        // Если время не установлено — инициализируем
+        if (remainingSeconds <= 0) {
+            totalSeconds = getWorkTime();
+            remainingSeconds = totalSeconds;
+            updateDisplay();
+            updateRing();
+        }
         isRunning = true;
         document.getElementById("start-btn").textContent = "ПАУЗА";
         timerInterval = setInterval(tick, 1000);
